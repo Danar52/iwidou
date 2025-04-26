@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SkyPort - Personal Web</title>
+    <title>I.wid.ou - Personal Web</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Poppins:wght@300;500;700&display=swap');
-
+        /* RESET */
         * {
             margin: 0;
             padding: 0;
@@ -23,8 +23,8 @@
         }
 
         header {
-            background-color: #03a9f4;
-            color: #000000;
+            background: #03a9f4;
+            color: #000;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -36,19 +36,15 @@
         }
 
         .logo {
-            display: flex;
-            align-items: center;
             font-size: 1.5rem;
             font-weight: 700;
+            display: flex;
+            align-items: center;
             gap: 10px;
         }
 
-        .logo i {
-            font-size: 2rem;
-        }
-
         .hamburger {
-            display: none;
+            display: flex;
             flex-direction: column;
             justify-content: space-between;
             width: 25px;
@@ -57,34 +53,65 @@
         }
 
         .hamburger div {
-            background: #fff;
+            background: #000;
             height: 3px;
             border-radius: 2px;
             transition: 0.3s;
         }
 
+        .hamburger:hover div {
+            transform: scaleY(1.2);
+        }
+
         .menu {
             position: fixed;
-            top: 0;
-            right: -300px;
-            /* mulai dari luar layar */
-            height: 100%;
-            width: 300px;
-            background: #ffffff;
+            top: 10px;
+            right: -310px;
+            width: 280px;
+            height: calc(100% - 20px);
+            background: #48c5ff;
             box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
             padding: 2rem 1.5rem;
             transition: right 0.4s ease;
             z-index: 1000;
+            border-radius: 20px 0 0 20px;
+            overflow: hidden;
         }
 
         .menu a {
             color: #333;
             padding: 1rem 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #000;
             text-decoration: none;
             font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #000;
+            transform: translateX(8px);
+            font-weight: 600;
+        }
+
+        .close-btn {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            color: #000;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            transform: rotate(90deg) scale(1.2);
+            color: #d20000;
         }
 
         .menu.show {
@@ -95,24 +122,15 @@
             position: fixed;
             top: 0;
             left: 0;
-            height: 100%;
             width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.4);
-            z-index: 900;
             display: none;
+            z-index: 900;
         }
 
         #menu-overlay.active {
             display: block;
-        }
-
-        .hamburger {
-            display: flex;
-            /* SELALU tampil */
-        }
-
-        @media (max-width: 992px) {
-            /* bisa kosongkan sini, karena semua settingan menu sudah berlaku untuk semua ukuran layar */
         }
 
         main {
@@ -121,7 +139,6 @@
 
         .section {
             min-height: 100vh;
-            /* Tambahan ini bikin section jadi satu layar penuh */
             padding: 100px 20px;
             display: flex;
             flex-direction: column;
@@ -144,7 +161,7 @@
         .btn-next {
             padding: 12px 24px;
             font-size: 1rem;
-            background-color: #181818;
+            background: #181818;
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -153,7 +170,7 @@
         }
 
         .btn-next:hover {
-            background-color: #818181;
+            background: #818181;
         }
 
         .typing {
@@ -167,73 +184,58 @@
         .section-about {
             padding: 100px 5vw;
             display: flex;
-            flex-direction: row;
             gap: 40px;
             justify-content: center;
             align-items: center;
         }
 
-        .slider-container {
+        .section-about-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             max-width: 400px;
-            position: relative;
-            flex-shrink: 0;
+            width: 100%;
         }
 
-        .slider-container img {
+        .slider-container {
             width: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
             border-radius: 16px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            transition: opacity 1s ease-in-out;
-            opacity: 1;
         }
 
-        .fade-out {
-            opacity: 0;
-        }
-
-        .slider-buttons {
-            position: absolute;
-            top: 50%;
-            width: 100%;
+        .slider-wrapper {
             display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
+            gap: 20px;
         }
 
-        .slider-buttons button {
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            color: white;
-            padding: 8px 12px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
-
-        .slider-buttons button:hover {
-            background-color: rgba(0, 0, 0, 0.7);
+        .slider-wrapper img {
+            flex-shrink: 0;
+            width: 100%;
+            border-radius: 16px;
+            object-fit: cover;
+            scroll-snap-align: center;
         }
 
         .slider-indicators {
             display: flex;
             justify-content: center;
-            margin-top: 10px;
             gap: 8px;
+            margin-top: 15px;
         }
 
-        .slider-indicators span {
+        .slider-indicators .dot {
             width: 10px;
             height: 10px;
             background: #bbb;
             border-radius: 50%;
-            display: inline-block;
-            transition: background 0.3s;
-            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        .slider-indicators .active {
-            background: #0288d1;
+        .slider-indicators .dot.active {
+            background: #333;
         }
 
         .section-about-text {
@@ -251,7 +253,27 @@
             margin-bottom: 1rem;
         }
 
-        /* RESPONSIVE */
+        .copyright {
+            font-size: 0.8rem;
+            color: #636363;
+            margin-top: auto;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #000000;
+        }
+
+        .connect-header {
+            margin-bottom: 20px;
+        }
+
+        .connect-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
         @media (max-width: 992px) {
             .section-about {
                 flex-direction: column;
@@ -259,25 +281,7 @@
             }
 
             .menu {
-                display: none;
-                position: absolute;
-                top: 70px;
-                right: 2rem;
-                background: #fff;
-                border-radius: 12px;
-                flex-direction: column;
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-                padding: 10px 0;
-            }
-
-            .menu a {
-                color: #333;
-                padding: 0.8rem 2rem;
-                border-bottom: 1px solid #eee;
-            }
-
-            .hamburger {
-                display: flex;
+                width: 200px;
             }
         }
 
@@ -301,37 +305,43 @@
 
 <body>
     <header>
-        <div class="logo">
-            <i class="bi bi-cloud-sun"></i> Iwiddd
-        </div>
+        <div class="logo"><i class="bi bi-cloud-sun"></i>I.wid.ou</div>
         <div class="hamburger" onclick="toggleMenu()">
             <div></div>
             <div></div>
             <div></div>
         </div>
         <nav class="menu" id="menu">
-            <button onclick="toggleMenu()"
-                style="align-self: flex-end; background: none; border: none; font-size: 1.5rem; margin-bottom: 1rem; cursor: pointer;">&times;</button>
+            <button class="close-btn" onclick="toggleMenu()">&times;</button>
+            <div class="connect-header">
+                <h3>Connect With Me</h3>
+            </div>
             <a href="https://www.instagram.com/i.wid.ou/" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>
-            <a href="https://www.tiktok.com/@chocholatechocholate?_t=ZS-8vqfnlT3GsR&_r=1" target="_blank"><i
-                    class="bi bi-tiktok"></i> TikTok</a>
+            <a href="https://www.tiktok.com/@chocholatechocholate" target="_blank"><i
+                    class="bi bi-tiktok"></i>TikTok</a>
             <a href="https://www.linkedin.com/in/username" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a>
+            <a href="https://www.linkedin.com/in/username" target="_blank"><i class="bi bi-bag-heart"></i> My
+                Showcase</a>
+            <div class="copyright">© Copyright 2025. Danar. All Rights Reserved</div>
         </nav>
         <div id="menu-overlay" onclick="toggleMenu()"></div>
     </header>
 
     <main>
-        <!-- Section 1 -->
         <section class="section" id="page1">
-            <h1><span class="typing" id="typing"></span>, welcome to SkyPort!</h1>
+            <h1><span class="typing" id="typing"></span>, I With You <i>(i.wid.ou)</i></h1>
             <p>Scroll down to discover more about me.</p>
             <button class="btn-next" onclick="scrollToSection('page2')">Next Page</button>
         </section>
 
-        <!-- Section 2 -->
-        <section class="section-about" id="page2" style="display: none;">
-            <div class="slider-container">
-                <img id="slider-image" src="8a1326ca-aa63-45d8-befd-89b03df6b8a9.jpg" alt="Foto Slider" />
+        <section class="section-about" id="page2" style="display:none;">
+            <div class="section-about-left">
+                <div class="slider-container" id="slider-container">
+                    <div class="slider-wrapper" id="slider-wrapper">
+                        <img src="8a1326ca-aa63-45d8-befd-89b03df6b8a9.jpg" alt="Foto 1" />
+                        <img src="a267b83a-3cf2-472a-b845-65fec58e5091.jpg" alt="Foto 2" />
+                    </div>
+                </div>
                 <div class="slider-indicators" id="indicators"></div>
             </div>
             <div class="section-about-text">
@@ -342,115 +352,60 @@
             </div>
         </section>
 
-        <!-- Section 3 -->
-        <section class="section" id="page3" style="display: none;">
+        <section class="section" id="page3" style="display:none;">
             <h1>Projects</h1>
             <p>Here are some of my recent works in design, development, and content creation.</p>
         </section>
     </main>
 
     <script>
-        // Slider logic
-        const sliderImages = [
-            "8a1326ca-aa63-45d8-befd-89b03df6b8a9.jpg",
-            "a267b83a-3cf2-472a-b845-65fec58e5091.jpg",
-            // tambahkan gambar lain jika mau
-        ];
-        let currentSlide = 0;
-        const sliderImg = document.getElementById("slider-image");
-        const indicatorsContainer = document.getElementById("indicators");
-
-        function updateIndicators() {
-            indicatorsContainer.innerHTML = '';
-            sliderImages.forEach((_, index) => {
-                const span = document.createElement('span');
-                if (index === currentSlide) span.classList.add('active');
-                span.onclick = () => goToSlide(index);
-                indicatorsContainer.appendChild(span);
-            });
-        }
-
-        function changeSlide(direction = 1) {
-            sliderImg.classList.add('fade-out');
-            setTimeout(() => {
-                currentSlide = (currentSlide + direction + sliderImages.length) % sliderImages.length;
-                sliderImg.src = sliderImages[currentSlide];
-                sliderImg.classList.remove('fade-out');
-                updateIndicators();
-            }, 500);
-        }
-
-        function previousSlide() {
-            changeSlide(-1);
-        }
-
-        function nextSlide() {
-            changeSlide(1);
-        }
-
-        function goToSlide(index) {
-            currentSlide = index;
-            sliderImg.src = sliderImages[currentSlide];
-            updateIndicators();
-        }
-
-        setInterval(() => {
-            changeSlide(1);
-        }, 4000);
-
-        updateIndicators(); // awal
-
         function toggleMenu() {
             const menu = document.getElementById("menu");
             const overlay = document.getElementById("menu-overlay");
-            const isOpen = menu.classList.contains("show");
-
-            if (isOpen) {
-                menu.classList.remove("show");
-                overlay.classList.remove("active");
-            } else {
-                menu.classList.add("show");
-                overlay.classList.add("active");
-            }
+            menu.classList.toggle("show");
+            overlay.classList.toggle("active");
         }
 
-        // Scroll smooth
-        function scrollToSection(id) {
-            const section = document.getElementById(id);
-            section.style.display = "flex"; // tampilkan section
-            section.classList.add("fade-in"); // kasih animasi fade-in
-            setTimeout(() => {
-                section.scrollIntoView({ behavior: "smooth" });
-            }, 100); // kasih delay kecil
-        }
-
-        // Typing Effect
-        const phrases = ["Hello!", "Hi there!", "Selamat Datang", "Welcome", "Yōkoso"];
-        let currentPhrase = 0;
-        let currentChar = 0;
-        let isDeleting = false;
+        const phrases = ["Hello!", "Bonjour!", "Ciao!", "Hola!", "Konnichiwa!", "Annyeonghaseyo!", "Nǐ hǎo"];
+        let currentPhrase = 0, currentChar = 0, isDeleting = false;
         const typingElement = document.getElementById("typing");
 
         function type() {
             const phrase = phrases[currentPhrase];
-            if (isDeleting) {
-                typingElement.textContent = phrase.substring(0, currentChar--);
-                if (currentChar < 0) {
-                    isDeleting = false;
-                    currentPhrase = (currentPhrase + 1) % phrases.length;
-                }
-            } else {
-                typingElement.textContent = phrase.substring(0, currentChar++);
-                if (currentChar > phrase.length) {
-                    isDeleting = true;
-                    setTimeout(type, 1000);
-                    return;
-                }
-            }
+            typingElement.textContent = phrase.substring(0, currentChar);
+            if (!isDeleting && currentChar++ === phrase.length) { isDeleting = true; setTimeout(type, 1000); return; }
+            if (isDeleting && currentChar-- === 0) { isDeleting = false; currentPhrase = (currentPhrase + 1) % phrases.length; }
             setTimeout(type, isDeleting ? 100 : 150);
         }
 
         type();
+
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            section.style.display = "flex";
+            section.classList.add("fade-in");
+            setTimeout(() => section.scrollIntoView({ behavior: "smooth" }), 100);
+        }
+
+        const sliderContainer = document.getElementById('slider-container');
+        const sliderWrapper = document.getElementById('slider-wrapper');
+        const indicators = document.getElementById('indicators');
+        const images = sliderWrapper.querySelectorAll('img');
+        images.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            if (index === 0) dot.classList.add('active');
+            indicators.appendChild(dot);
+        });
+
+        sliderContainer.addEventListener('scroll', () => {
+            const scrollLeft = sliderContainer.scrollLeft;
+            const containerWidth = sliderContainer.offsetWidth;
+            const activeIndex = Math.round(scrollLeft / (containerWidth + 20));
+            document.querySelectorAll('.dot').forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === activeIndex);
+            });
+        });
     </script>
 </body>
 
