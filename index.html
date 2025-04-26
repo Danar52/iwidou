@@ -64,23 +64,46 @@
         }
 
         .menu {
-            display: none;
-            /* default disembunyikan */
-            position: absolute;
-            top: 70px;
-            right: 2rem;
-            background: #fff;
-            border-radius: 12px;
+            position: fixed;
+            top: 0;
+            right: -300px;
+            /* mulai dari luar layar */
+            height: 100%;
+            width: 300px;
+            background: #ffffff;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+            display: flex;
             flex-direction: column;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            padding: 10px 0;
-            z-index: 15;
+            padding: 2rem 1.5rem;
+            transition: right 0.4s ease;
+            z-index: 1000;
         }
 
         .menu a {
             color: #333;
-            padding: 0.8rem 2rem;
+            padding: 1rem 0;
             border-bottom: 1px solid #eee;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .menu.show {
+            right: 0;
+        }
+
+        #menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 900;
+            display: none;
+        }
+
+        #menu-overlay.active {
+            display: block;
         }
 
         .hamburger {
@@ -97,6 +120,8 @@
         }
 
         .section {
+            min-height: 100vh;
+            /* Tambahan ini bikin section jadi satu layar penuh */
             padding: 100px 20px;
             display: flex;
             flex-direction: column;
@@ -285,11 +310,14 @@
             <div></div>
         </div>
         <nav class="menu" id="menu">
+            <button onclick="toggleMenu()"
+                style="align-self: flex-end; background: none; border: none; font-size: 1.5rem; margin-bottom: 1rem; cursor: pointer;">&times;</button>
             <a href="https://www.instagram.com/i.wid.ou/" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>
             <a href="https://www.tiktok.com/@chocholatechocholate?_t=ZS-8vqfnlT3GsR&_r=1" target="_blank"><i
                     class="bi bi-tiktok"></i> TikTok</a>
             <a href="https://www.linkedin.com/in/username" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a>
         </nav>
+        <div id="menu-overlay" onclick="toggleMenu()"></div>
     </header>
 
     <main>
@@ -374,10 +402,15 @@
 
         function toggleMenu() {
             const menu = document.getElementById("menu");
-            if (menu.style.display === "block") {
-                menu.style.display = "none";
+            const overlay = document.getElementById("menu-overlay");
+            const isOpen = menu.classList.contains("show");
+
+            if (isOpen) {
+                menu.classList.remove("show");
+                overlay.classList.remove("active");
             } else {
-                menu.style.display = "block";
+                menu.classList.add("show");
+                overlay.classList.add("active");
             }
         }
 
