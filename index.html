@@ -1,28 +1,27 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Showcase</title>
+    <title>I.wid.ou - Personal Web</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-</head>
-<style>
-    /* Reset dan Body */
-    * {
+    <style>
+        /* RESET */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-    
+
         body {
             background: linear-gradient(to bottom right, #b3e5fc, #e1f5fe);
             color: #333;
             scroll-behavior: smooth;
         }
-    
-        /* Header */
+
         header {
             background: #03a9f4;
             color: #000;
@@ -35,7 +34,7 @@
             z-index: 20;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-    
+
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
@@ -43,7 +42,7 @@
             align-items: center;
             gap: 10px;
         }
-    
+
         .hamburger {
             display: flex;
             flex-direction: column;
@@ -52,18 +51,18 @@
             height: 18px;
             cursor: pointer;
         }
-    
+
         .hamburger div {
             background: #000;
             height: 3px;
             border-radius: 2px;
             transition: 0.3s;
         }
-    
+
         .hamburger:hover div {
             transform: scaleY(1.2);
         }
-    
+
         .menu {
             position: fixed;
             top: 10px;
@@ -80,7 +79,7 @@
             border-radius: 20px 0 0 20px;
             overflow: hidden;
         }
-    
+
         .menu a {
             color: #333;
             padding: 1rem 0;
@@ -92,13 +91,13 @@
             gap: 10px;
             transition: all 0.3s ease;
         }
-    
+
         .menu a:hover {
             color: #000;
             transform: translateX(8px);
             font-weight: 600;
         }
-    
+
         .close-btn {
             align-self: flex-end;
             background: none;
@@ -109,16 +108,16 @@
             color: #000;
             transition: transform 0.3s ease, color 0.3s ease;
         }
-    
+
         .close-btn:hover {
             transform: rotate(90deg) scale(1.2);
             color: #d20000;
         }
-    
+
         .menu.show {
             right: 0;
         }
-    
+
         #menu-overlay {
             position: fixed;
             top: 0;
@@ -129,11 +128,131 @@
             display: none;
             z-index: 900;
         }
-    
+
         #menu-overlay.active {
             display: block;
         }
-    
+
+        main {
+            width: 100%;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin-bottom: 2rem;
+        }
+
+        .btn-next {
+            padding: 12px 24px;
+            font-size: 1rem;
+            background: #181818;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-next:hover {
+            background: #818181;
+        }
+
+        .typing {
+            color: #ed8700;
+            font-weight: 700;
+            border-right: 2px solid #0288d1;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .section-about {
+            padding: 100px 5vw;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-about-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .slider-container {
+            width: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider-wrapper {
+            display: flex;
+            gap: 20px;
+        }
+
+        .slider-wrapper img {
+            flex-shrink: 0;
+            width: 100%;
+            border-radius: 16px;
+            object-fit: cover;
+            scroll-snap-align: center;
+        }
+
+        .slider-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .slider-indicators .dot {
+            width: 10px;
+            height: 10px;
+            background: #bbb;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .slider-indicators .dot.active {
+            background: #333;
+        }
+
+        .section-about-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .section-about-text h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
         .copyright {
             font-size: 0.8rem;
             color: #636363;
@@ -155,130 +274,34 @@
             margin-bottom: 10px;
         }
 
-    /* Content */
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 40px 20px;
-        text-align: center;
-    }
+        @media (max-width: 992px) {
+            .section-about {
+                flex-direction: column;
+                text-align: center;
+            }
 
-    .heading {
-        font-size: 2rem;
-        color: #333;
-        margin-bottom: 40px;
-        font-weight: 500;
-    }
-
-    .profile {
-        margin-bottom: 30px;
-        text-align: center;
-    }
-
-    .profile img {
-        border-radius: 50%;
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-        margin-bottom: 20px;
-    }
-
-    .profile h2 {
-        font-size: 1.6rem;
-        color: #333;
-        font-weight: 600;
-        margin-bottom: 10px;
-    }
-
-    .profile p {
-        font-size: 1rem;
-        color: #555;
-    }
-
-    .product-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 30px;
-        justify-items: center;
-    }
-
-    .product-card {
-        background-color: #fff;
-        border-radius: 12px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        width: 100%;
-        max-width: 320px;
-        text-align: center;
-        padding: 20px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .product-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    .product-card img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 20px;
-    }
-
-    .product-card h2 {
-    font-size: 1.2rem;  /* Ukuran font menjadi lebih kecil */
-    color: #333;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-.product-card .price {
-    font-size: 1rem;  /* Ukuran font menjadi lebih kecil */
-    color: #8f8f8f;
-    margin-bottom: 20px;
-    font-weight: 500;
-}
-
-    .product-card .btn {
-        padding: 12px 24px;
-        background-color: #009fd8;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 1rem;
-        font-weight: 500;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    .product-card .btn:hover {
-        background-color: #004595;
-        transform: translateY(-2px);
-    }
-
-    /* Responsiveness */
-    @media (max-width: 768px) {
-        .heading {
-            font-size: 1.8rem;
+            .menu {
+                width: 200px;
+            }
         }
 
-        .product-grid {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .heading {
-            font-size: 1.6rem;
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
         }
 
-        .product-grid {
-            grid-template-columns: 1fr;
-        }
-    }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
 
-</style>
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
 
 <body>
     <header>
@@ -296,46 +319,42 @@
             <a href="https://www.instagram.com/i.wid.ou/" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>
             <a href="https://www.tiktok.com/@chocholatechocholate" target="_blank"><i class="bi bi-tiktok"></i>TikTok</a>
             <a href="https://www.linkedin.com/in/widia-rossi-46735b255/" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a>
-            <a href="asset/showcase/index.html" target="_blank"><i class="bi bi-bag-heart"></i> My Showcase</a>
+            <a href="asset/showcase/index.html" target="_blank"><i class="bi bi-bag-heart"></i> My
+                Showcase</a>
             <div class="copyright">© Copyright 2025. Iwiddd. All Rights Reserved</div>
         </nav>
         <div id="menu-overlay" onclick="toggleMenu()"></div>
     </header>
 
-    <div class="container">
-        <div class="profile">
-            <img src="asset/img/pict1.jpg" alt="Profilku">
-            <h2>My Showcase</h2>
-            <p>Selamat datang di My Showcase. Di sini saya menampilkan beberapa produk pilihan yang saya sukai. Semoga dapat memberikan inspirasi bagi Anda.</p>
-        </div>
+    <main>
+        <section class="section" id="page1">
+            <h1><span class="typing" id="typing"></span>, I With You <i>(i.wid.ou)</i></h1>
+            <p>Scroll down to discover more about me.</p>
+            <button class="btn-next" onclick="scrollToSection('page2')">Next Page</button>
+        </section>
 
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://images.tokopedia.net/img/cache/900/hDjmkQ/2025/1/23/d96a349b-f46e-4746-9624-cbfa5dfea745.jpg" alt="Max Fashions Sandal Wanita">
-                <h2>Max Fashions Sandal Wanita Textured Slip-On Flat Shoes</h2>
-                <p class="price">No. 001</p>
-                <a href="https://tokopedia.link/9grhUpwhISb" class="btn">Lihat Produk</a>
+        <section class="section-about" id="page2" style="display:none;">
+            <div class="section-about-left">
+                <div class="slider-container" id="slider-container">
+                    <div class="slider-wrapper" id="slider-wrapper">
+                        <img src="asset/img/8a1326ca-aa63-45d8-befd-89b03df6b8a9.jpg" alt="Foto 1" />
+                        <img src="asset/img/a267b83a-3cf2-472a-b845-65fec58e5091.jpg" alt="Foto 2" />
+                    </div>
+                </div>
+                <div class="slider-indicators" id="indicators"></div>
             </div>
-            <div class="product-card">
-                <img src="https://images.tokopedia.net/img/cache/900/VqbcmM/2023/12/12/3e9e5c38-2b0f-4454-ad9e-c769d306249c.jpg" alt="Gamis Perempuan" />
-                <h2>ZM Zaskia Mecca - Galya Gamis - Aksara Nusantara - Edisi Bengkulu</h2>
-                <p class="price">No. 002</p>
-                <a href="https://tokopedia.link/9grhUpwhISb" class="btn">Lihat Produk</a>
+            <div class="section-about-text">
+                <h1>About <i>I.Wid.Ou</i></h1>
+                <p>Jadi, nama <b>“I.Wid.Ou”</b> itu asalnya dari nama panggilan aku, “Iwid”. Nah, kenapa jadi <b>“I.Wid.Ou”</b>? Karena aku kepikiran, kalau diucapin, terdengar mirip banget sama <i>“I With You”</i>—yang artinya <i>“Aku dengan kamu”</i>. Makanya, aku pilih nama itu, biar kayak ngasih pesan bahwa aku selalu ada bareng kamu. <i>Simple, but it has a deeper meaning, right??</i></p>
+                <button class="btn-next" onclick="scrollToSection('page3')">Next Page</button>
             </div>
-            <div class="product-card">
-                <img src="https://images.tokopedia.net/img/cache/900/aphluv/1997/1/1/fff69dbee3214b91856d42b6076f1018~.jpeg" alt="Tas Wanita" />
-                <h2>Jims Honey - Vivi PLUS - Tas Ransel Backpack Wanita Kulit</h2>
-                <p class="price">No. 003</p>
-                <a href="https://tokopedia.link/Ypf8xF6hISb" class="btn">Lihat Produk</a>
-            </div>
-            <div class="product-card">
-                <img src="https://images.tokopedia.net/img/cache/900/VqbcmM/2024/11/15/452ee65c-f346-4546-ad1c-852fdaa0ab0c.jpg" alt="Ciomy Cuanki" />
-                <h2>Ciomy Cuanki Yummy Rasa Ayam Pedas</h2>
-                <p class="price">No. 004</p>
-                <a href="https://tokopedia.link/SXEQTsAiISb" class="btn">Lihat Produk</a>
-            </div>
-        </div>
-    </div>
+        </section>
+
+        <section class="section" id="page3" style="display:none;">
+            <h1>---</h1>
+            <p>Disini nanti bisa nambahin buat foto yang menurutmu aesthetic atau bagus</p>
+        </section>
+    </main>
 
     <script>
         function toggleMenu() {
@@ -344,6 +363,48 @@
             menu.classList.toggle("show");
             overlay.classList.toggle("active");
         }
+
+        const phrases = ["Hello!", "Bonjour!", "Ciao!", "Hola!", "Konnichiwa!", "Annyeonghaseyo!", "Nǐ hǎo"];
+        let currentPhrase = 0, currentChar = 0, isDeleting = false;
+        const typingElement = document.getElementById("typing");
+
+        function type() {
+            const phrase = phrases[currentPhrase];
+            typingElement.textContent = phrase.substring(0, currentChar);
+            if (!isDeleting && currentChar++ === phrase.length) { isDeleting = true; setTimeout(type, 1000); return; }
+            if (isDeleting && currentChar-- === 0) { isDeleting = false; currentPhrase = (currentPhrase + 1) % phrases.length; }
+            setTimeout(type, isDeleting ? 100 : 150);
+        }
+
+        type();
+
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            section.style.display = "flex";
+            section.classList.add("fade-in");
+            setTimeout(() => section.scrollIntoView({ behavior: "smooth" }), 100);
+        }
+
+        const sliderContainer = document.getElementById('slider-container');
+        const sliderWrapper = document.getElementById('slider-wrapper');
+        const indicators = document.getElementById('indicators');
+        const images = sliderWrapper.querySelectorAll('img');
+        images.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            if (index === 0) dot.classList.add('active');
+            indicators.appendChild(dot);
+        });
+
+        sliderContainer.addEventListener('scroll', () => {
+            const scrollLeft = sliderContainer.scrollLeft;
+            const containerWidth = sliderContainer.offsetWidth;
+            const activeIndex = Math.round(scrollLeft / (containerWidth + 20));
+            document.querySelectorAll('.dot').forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === activeIndex);
+            });
+        });
     </script>
 </body>
+
 </html>
