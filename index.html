@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SkyPort - Personal Web</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Poppins:wght@300;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #b3e5fc, #e1f5fe);
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: #03a9f4;
+            color: #000000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            background: #fff;
+            height: 3px;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .menu {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .menu a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .menu a:hover {
+            color: #eee;
+            opacity: 0.8;
+        }
+
+        main {
+            width: 100%;
+        }
+
+        .section {
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin-bottom: 2rem;
+        }
+
+        .btn-next {
+            padding: 12px 24px;
+            font-size: 1rem;
+            background-color: #181818;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-next:hover {
+            background-color: #818181;
+        }
+
+        .typing {
+            color: #ed8700;
+            font-weight: 700;
+            border-right: 2px solid #0288d1;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .section-about {
+            padding: 100px 5vw;
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slider-container {
+            max-width: 400px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .slider-container img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: opacity 1s ease-in-out;
+            opacity: 1;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+
+        .slider-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .slider-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .slider-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .slider-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            gap: 8px;
+        }
+
+        .slider-indicators span {
+            width: 10px;
+            height: 10px;
+            background: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .slider-indicators .active {
+            background: #0288d1;
+        }
+
+        .section-about-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .section-about-text h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .section-about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .menu {
+                display: none;
+                position: absolute;
+                top: 70px;
+                right: 2rem;
+                background: #fff;
+                border-radius: 12px;
+                flex-direction: column;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                padding: 10px 0;
+            }
+
+            .menu a {
+                color: #333;
+                padding: 0.8rem 2rem;
+                border-bottom: 1px solid #eee;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <i class="bi bi-cloud-sun"></i> SkyPort
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav class="menu" id="menu">
+            <a href="https://www.instagram.com/username" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>
+            <a href="https://www.tiktok.com/@username" target="_blank"><i class="bi bi-tiktok"></i> TikTok</a>
+            <a href="https://www.linkedin.com/in/username" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a>
+            <a href="https://www.youtube.com/@username" target="_blank"><i class="bi bi-youtube"></i> YouTube</a>
+            <a href="mailto:emailkamu@example.com"><i class="bi bi-envelope-fill"></i> Email</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section 1 -->
+        <section class="section" id="page1">
+            <h1><span class="typing" id="typing"></span>, welcome to SkyPort!</h1>
+            <p>Scroll down to discover more about me.</p>
+            <button class="btn-next" onclick="scrollToSection('page2')">Next Page</button>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="section-about" id="page2" style="display: none;">
+            <div class="slider-container">
+                <img id="slider-image" src="8a1326ca-aa63-45d8-befd-89b03df6b8a9.jpg" alt="Foto Slider" />
+                <div class="slider-indicators" id="indicators"></div>
+            </div>
+            <div class="section-about-text">
+                <h1>About Me</h1>
+                <p>Hello! I'm a creative and tech-savvy person who enjoys building cool things on the web.</p>
+                <p>I love blending design, logic, and storytelling to make something unique and functional.</p>
+                <button class="btn-next" onclick="scrollToSection('page3')">Next Page</button>
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="section" id="page3" style="display: none;">
+            <h1>Projects</h1>
+            <p>Here are some of my recent works in design, development, and content creation.</p>
+        </section>
+    </main>
+
+    <script>
+        // Slider logic
+        const sliderImages = [
+            "8a1326ca-aa63-45d8-befd-89b03df6b8a9.jpg",
+            "a267b83a-3cf2-472a-b845-65fec58e5091.jpg",
+            // tambahkan gambar lain jika mau
+        ];
+        let currentSlide = 0;
+        const sliderImg = document.getElementById("slider-image");
+        const indicatorsContainer = document.getElementById("indicators");
+
+        function updateIndicators() {
+            indicatorsContainer.innerHTML = '';
+            sliderImages.forEach((_, index) => {
+                const span = document.createElement('span');
+                if (index === currentSlide) span.classList.add('active');
+                span.onclick = () => goToSlide(index);
+                indicatorsContainer.appendChild(span);
+            });
+        }
+
+        function changeSlide(direction = 1) {
+            sliderImg.classList.add('fade-out');
+            setTimeout(() => {
+                currentSlide = (currentSlide + direction + sliderImages.length) % sliderImages.length;
+                sliderImg.src = sliderImages[currentSlide];
+                sliderImg.classList.remove('fade-out');
+                updateIndicators();
+            }, 500);
+        }
+
+        function previousSlide() {
+            changeSlide(-1);
+        }
+
+        function nextSlide() {
+            changeSlide(1);
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            sliderImg.src = sliderImages[currentSlide];
+            updateIndicators();
+        }
+
+        setInterval(() => {
+            changeSlide(1);
+        }, 4000);
+
+        updateIndicators(); // awal
+
+        // Hamburger
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        // Scroll smooth
+        function scrollToSection(id) {
+    const section = document.getElementById(id);
+    section.style.display = "flex"; // tampilkan section
+    section.classList.add("fade-in"); // kasih animasi fade-in
+    setTimeout(() => {
+        section.scrollIntoView({ behavior: "smooth" });
+    }, 100); // kasih delay kecil
+}
+
+        // Typing Effect
+        const phrases = ["Hello!", "Hi there!", "Selamat Datang", "Welcome", "Yōkoso"];
+        let currentPhrase = 0;
+        let currentChar = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById("typing");
+
+        function type() {
+            const phrase = phrases[currentPhrase];
+            if (isDeleting) {
+                typingElement.textContent = phrase.substring(0, currentChar--);
+                if (currentChar < 0) {
+                    isDeleting = false;
+                    currentPhrase = (currentPhrase + 1) % phrases.length;
+                }
+            } else {
+                typingElement.textContent = phrase.substring(0, currentChar++);
+                if (currentChar > phrase.length) {
+                    isDeleting = true;
+                    setTimeout(type, 1000);
+                    return;
+                }
+            }
+            setTimeout(type, isDeleting ? 100 : 150);
+        }
+
+        type();
+    </script>
+</body>
+
+</html>
