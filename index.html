@@ -64,20 +64,32 @@
         }
 
         .menu {
-            display: flex;
-            gap: 1.5rem;
+            display: none;
+            /* default disembunyikan */
+            position: absolute;
+            top: 70px;
+            right: 2rem;
+            background: #fff;
+            border-radius: 12px;
+            flex-direction: column;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            z-index: 15;
         }
 
         .menu a {
-            color: #000000;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.2s;
+            color: #333;
+            padding: 0.8rem 2rem;
+            border-bottom: 1px solid #eee;
         }
 
-        .menu a:hover {
-            color: #eee;
-            opacity: 0.8;
+        .hamburger {
+            display: flex;
+            /* SELALU tampil */
+        }
+
+        @media (max-width: 992px) {
+            /* bisa kosongkan sini, karena semua settingan menu sudah berlaku untuk semua ukuran layar */
         }
 
         main {
@@ -245,20 +257,20 @@
         }
 
         .fade-in {
-    animation: fadeIn 1s ease forwards;
-}
+            animation: fadeIn 1s ease forwards;
+        }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
 
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -274,10 +286,9 @@
         </div>
         <nav class="menu" id="menu">
             <a href="https://www.instagram.com/i.wid.ou/" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>
-            <a href="https://www.tiktok.com/@chocholatechocholate?_t=ZS-8vqfnlT3GsR&_r=1" target="_blank"><i class="bi bi-tiktok"></i> TikTok</a>
+            <a href="https://www.tiktok.com/@chocholatechocholate?_t=ZS-8vqfnlT3GsR&_r=1" target="_blank"><i
+                    class="bi bi-tiktok"></i> TikTok</a>
             <a href="https://www.linkedin.com/in/username" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a>
-            <!-- <a href="https://www.youtube.com/@username" target="_blank"><i class="bi bi-youtube"></i> YouTube</a> -->
-            <!-- <a href="mailto:emailkamu@example.com"><i class="bi bi-envelope-fill"></i> Email</a> -->
         </nav>
     </header>
 
@@ -361,21 +372,24 @@
 
         updateIndicators(); // awal
 
-        // Hamburger
         function toggleMenu() {
             const menu = document.getElementById("menu");
-            menu.style.display = menu.style.display === "block" ? "none" : "block";
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
         }
 
         // Scroll smooth
         function scrollToSection(id) {
-    const section = document.getElementById(id);
-    section.style.display = "flex"; // tampilkan section
-    section.classList.add("fade-in"); // kasih animasi fade-in
-    setTimeout(() => {
-        section.scrollIntoView({ behavior: "smooth" });
-    }, 100); // kasih delay kecil
-}
+            const section = document.getElementById(id);
+            section.style.display = "flex"; // tampilkan section
+            section.classList.add("fade-in"); // kasih animasi fade-in
+            setTimeout(() => {
+                section.scrollIntoView({ behavior: "smooth" });
+            }, 100); // kasih delay kecil
+        }
 
         // Typing Effect
         const phrases = ["Hello!", "Hi there!", "Selamat Datang", "Welcome", "Yōkoso"];
