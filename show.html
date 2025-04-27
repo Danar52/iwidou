@@ -121,22 +121,22 @@
         }
 
         .menu a.home-link {
-    color: #333;
-    padding: 1rem 0;
-    border-bottom: 1px solid #000;
-    text-decoration: none;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-}
+            color: #333;
+            padding: 1rem 0;
+            border-bottom: 1px solid #000;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
 
-.menu a.home-link:hover {
-    color: #000;
-    transform: translateX(8px);
-    font-weight: 600;
-}
+        .menu a.home-link:hover {
+            color: #000;
+            transform: translateX(8px);
+            font-weight: 600;
+        }
 
         #menu-overlay {
             position: fixed;
@@ -284,6 +284,19 @@
 
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
+                /* Menampilkan dua kolom */
+                gap: 20px;
+                /* Memberi jarak antar produk sedikit lebih kecil */
+            }
+
+            .product-card {
+                padding: 15px;
+                /* Mengurangi padding di produk agar pas dengan ukuran layar */
+            }
+
+            .product-card img {
+                height: 180px;
+                /* Mengurangi tinggi gambar produk agar lebih proporsional */
             }
         }
     </style>
@@ -304,8 +317,10 @@
             </div>
             <a href="index.html" class="home-link"><i class="bi bi-house-door"></i> Home</a>
             <a href="https://www.instagram.com/i.wid.ou/" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>
-            <a href="https://www.tiktok.com/@chocholatechocholate" target="_blank"><i class="bi bi-tiktok"></i> TikTok</a>
-            <a href="https://www.linkedin.com/in/widia-rossi-46735b255/" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a>
+            <a href="https://www.tiktok.com/@chocholatechocholate" target="_blank"><i class="bi bi-tiktok"></i>
+                TikTok</a>
+            <a href="https://www.linkedin.com/in/widia-rossi-46735b255/" target="_blank"><i class="bi bi-linkedin"></i>
+                LinkedIn</a>
             <a href="show.html" target="_blank"><i class="bi bi-bag-heart"></i> My Showcase</a>
             <div class="copyright">&copy; Copyright 2025. Iwiddd. All Rights Reserved</div>
         </nav>
