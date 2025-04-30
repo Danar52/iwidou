@@ -357,6 +357,28 @@
             menu.classList.toggle('show');
             overlay.classList.toggle('active');
         }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const overlay = document.getElementById('menu-overlay');
+            menu.classList.toggle('show');
+            overlay.classList.toggle('active');
+        }
+
+        // Fungsi search produk
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const keyword = this.value.toLowerCase();
+            const products = document.querySelectorAll('.product-item');
+
+            products.forEach(product => {
+                const title = product.querySelector('h2').textContent.toLowerCase();
+                if (title.includes(keyword)) {
+                    product.style.display = 'flex';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
     </script>
 </body>
 
