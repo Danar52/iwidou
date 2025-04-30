@@ -34,7 +34,6 @@
             z-index: 20;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 20px;
-            /* ini bikin header sudutnya melengkung */
         }
 
         .logo {
@@ -120,24 +119,6 @@
             right: 0;
         }
 
-        .menu a.home-link {
-            color: #333;
-            padding: 1rem 0;
-            border-bottom: 1px solid #000;
-            text-decoration: none;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .menu a.home-link:hover {
-            color: #000;
-            transform: translateX(8px);
-            font-weight: 600;
-        }
-
         #menu-overlay {
             position: fixed;
             top: 0;
@@ -193,120 +174,97 @@
             line-height: 1.2;
         }
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+        .search-container {
+            margin-bottom: 30px;
+        }
+
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
             padding: 10px;
         }
 
-        .product-card {
+        .product-item {
             background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            text-align: center;
-            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        .product-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            background-color: #f0faff;
         }
 
-        .product-card img {
-            width: 100%;
-            height: 200px;
+        .product-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
             object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 15px;
         }
 
-        .product-card h2 {
+        .product-item h2 {
             font-size: 1.1rem;
             color: #333;
-            margin-bottom: 10px;
-            font-weight: 600;
+            margin: 0;
         }
 
-        .product-card .price {
+        .product-item .price {
             font-size: 0.9rem;
-            color: #8f8f8f;
-            margin-bottom: 15px;
+            color: #777;
+            margin: 5px 0;
         }
 
-        .product-card .btn {
-            padding: 10px 20px;
-            background-color: #009fd8;
+        .product-item .btn {
+            display: inline-block;
+            padding: 8px 14px;
+            background-color: #00bcd4;
             color: #fff;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.95rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
         }
 
-        .product-card .btn:hover {
-            background-color: #004595;
-            transform: translateY(-2px);
+        .product-item .btn:hover {
+            background-color: #008ba3;
+            transform: scale(1.05);
         }
 
-        .connect-header {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .connect-header h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .copyright {
-            font-size: 0.8rem;
-            color: #636363;
-            margin-top: auto;
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #000;
-        }
-
-        @media (max-width: 768px) {
-            .profile-img {
-                width: 120px;
-                height: 120px;
+        /* RESPONSIVE UNTUK HP */
+        @media (max-width: 600px) {
+            .product-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 12px;
             }
 
-            .brand-name {
-                font-size: 1.6rem;
+            .product-item img {
+                width: 90px;
+                height: 90px;
             }
 
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                /* Menampilkan dua kolom */
-                gap: 20px;
-                /* Memberi jarak antar produk sedikit lebih kecil */
+            .product-item h2 {
+                font-size: 1rem;
             }
 
-            .product-card {
-                padding: 15px;
-                /* Mengurangi padding di produk agar pas dengan ukuran layar */
-            }
-
-            .product-card img {
-                height: 180px;
-                /* Mengurangi tinggi gambar produk agar lebih proporsional */
-            }
-
-            .product-card h2 {
-                font-size: 0.95rem;
-            }
-
-            .product-card .btn {
+            .product-item .price,
+            .product-item .btn {
                 font-size: 0.85rem;
-                padding: 8px 16px;
             }
+
+            .product-item .btn {
+                padding: 6px 12px;
+            }
+
         }
     </style>
 </head>
@@ -347,69 +305,58 @@
             </div>
         </div>
 
-        <div class="search-container" style="margin-bottom: 30px;">
-            <input type="text" id="searchInput" placeholder="Cari produk..." style="
-                width: 100%;
-                max-width: 400px;
-                padding: 10px 15px;
-                border: 2px solid #03a9f4;
-                border-radius: 8px;
-                font-size: 1rem;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            ">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Cari produk..."
+                style="width: 100%; max-width: 400px; padding: 10px 15px; border: 2px solid #03a9f4; border-radius: 8px; font-size: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
         </div>
 
-        <div class="product-grid">
-            <div class="product-card">
+        <div class="product-list">
+            <div class="product-item">
                 <img src="https://images.tokopedia.net/img/cache/900/hDjmkQ/2025/1/23/d96a349b-f46e-4746-9624-cbfa5dfea745.jpg"
                     alt="Max Fashions Sandal">
-                <h2>Max Fashions Sandal Wanita</h2>
-                <p class="price">No. 001</p>
-                <a href="https://tokopedia.link/9grhUpwhISb" class="btn">Lihat Produk</a>
+                <div>
+                    <h2>Max Fashions Sandal Wanita</h2>
+                    <p class="price">No. 001</p>
+                    <a href="https://tokopedia.link/9grhUpwhISb" class="btn">Lihat Produk</a>
+                </div>
             </div>
-            <div class="product-card">
+            <div class="product-item">
                 <img src="https://images.tokopedia.net/img/cache/900/VqbcmM/2023/12/12/3e9e5c38-2b0f-4454-ad9e-c769d306249c.jpg"
-                    alt="Gamis Perempuan" />
-                <h2>ZM Zaskia Mecca - Galya Gamis</h2>
-                <p class="price">No. 002</p>
-                <a href="https://tokopedia.link/9grhUpwhISb" class="btn">Lihat Produk</a>
+                    alt="Gamis Perempuan">
+                <div>
+                    <h2>ZM Zaskia Mecca - Galya Gamis</h2>
+                    <p class="price">No. 002</p>
+                    <a href="https://tokopedia.link/9grhUpwhISb" class="btn">Lihat Produk</a>
+                </div>
             </div>
-            <div class="product-card">
+            <div class="product-item">
                 <img src="https://images.tokopedia.net/img/cache/900/aphluv/1997/1/1/fff69dbee3214b91856d42b6076f1018~.jpeg"
-                    alt="Tas Wanita" />
-                <h2>Jims Honey - Vivi PLUS</h2>
-                <p class="price">No. 003</p>
-                <a href="https://tokopedia.link/Ypf8xF6hISb" class="btn">Lihat Produk</a>
+                    alt="Tas Wanita">
+                <div>
+                    <h2>Jims Honey - Vivi PLUS</h2>
+                    <p class="price">No. 003</p>
+                    <a href="https://tokopedia.link/Ypf8xF6hISb" class="btn">Lihat Produk</a>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="https://images.tokopedia.net/img/cache/900/VqbcmM/2024/11/15/452ee65c-f346-4546-ad1c-852fdaa0ab0c.jpg"
-                    alt="Ciomy Cuanki" />
-                <h2>Ciomy Cuanki Yummy</h2>
-                <p class="price">No. 004</p>
-                <a href="https://tokopedia.link/SXEQTsAiISb" class="btn">Lihat Produk</a>
+            <div class="product-item">
+                <img src="https://images.tokopedia.net/img/cache/900/VqbcmM/2024/11/15/a4295854-0358-4a0c-baf2-3d404dbb042f.jpg"
+                    alt="Sneaker Pria">
+                <div>
+                    <h2>Adidas Bounce Training</h2>
+                    <p class="price">No. 004</p>
+                    <a href="https://tokopedia.link/4Nhgs56HISb" class="btn">Lihat Produk</a>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById("menu");
-            const overlay = document.getElementById("menu-overlay");
-            menu.classList.toggle("show");
-            overlay.classList.toggle("active");
+            const menu = document.getElementById('menu');
+            const overlay = document.getElementById('menu-overlay');
+            menu.classList.toggle('show');
+            overlay.classList.toggle('active');
         }
-
-        // Fitur pencarian
-        const searchInput = document.getElementById("searchInput");
-        searchInput.addEventListener("input", function () {
-            const keyword = this.value.toLowerCase();
-            const cards = document.querySelectorAll(".product-card");
-
-            cards.forEach(card => {
-                const title = card.querySelector("h2").textContent.toLowerCase();
-                card.style.display = title.includes(keyword) ? "block" : "none";
-            });
-        });
     </script>
 </body>
 
