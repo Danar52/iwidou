@@ -238,40 +238,60 @@
             transform: scale(1.05);
         }
 
+        .copyright {
+            font-size: 0.8rem;
+            color: #636363;
+            margin-top: auto;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #000000;
+        }
+
+
         /* RESPONSIVE UNTUK HP */
         @media (max-width: 600px) {
-            .product-item {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 12px;
-            }
+    .product-list {
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
+        padding-bottom: 10px;
+    }
 
-            .product-item img {
-                width: 90px;
-                height: 90px;
-            }
+    .product-item {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        width: 250px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 12px;
+    }
 
-            .product-item h2 {
-                font-size: 1rem;
-            }
+    .product-item img {
+        width: 100px;
+        height: 100px;
+    }
 
-            .product-item .price,
-            .product-item .btn {
-                font-size: 0.85rem;
-            }
+    .product-item h2 {
+        font-size: 1rem;
+    }
 
-            .product-item .btn {
-                padding: 6px 12px;
-            }
+    .product-item .price,
+    .product-item .btn {
+        font-size: 0.85rem;
+    }
 
-        }
+    .product-item .btn {
+        padding: 6px 12px;
+    }
+}
     </style>
 </head>
 
 <body>
     <header>
-        <div class="logo"><i class="bi bi-cloud-sun"></i>I.wid.ou</div>
+        <div class="logo"><i class="bi bi-cloud-sun"></i>Iwiddd</div>
         <div class="hamburger" onclick="toggleMenu()">
             <div></div>
             <div></div>
@@ -299,9 +319,8 @@
             <img src="asset/img/pict1.jpg" alt="Profilku" class="profile-img" />
             <div class="vertical-line"></div>
             <div class="brand-name">
-                <div>I.</div>
-                <div>Wid.</div>
-                <div>Ou.</div>
+                <div>I'm.</div>
+                <div>Iwiddd.</div>
             </div>
         </div>
 
