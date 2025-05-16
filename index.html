@@ -343,7 +343,7 @@
         <section class="section" id="page1">
             <h1><span class="typing" id="typing"></span>, I'm Iwiddd</h1>
             <p>Tap tombol dibawah untuk melihat lebih banyak ya</p>
-            <button class="btn-next" onclick="scrollToSection('page1')">Next Page</button>
+            <button class="btn-next" onclick="scrollToSection('page2')">Next Page</button>
         </section>
     </main>
 
@@ -365,8 +365,15 @@
         function type() {
             const phrase = phrases[currentPhrase];
             typingElement.textContent = phrase.substring(0, currentChar);
-            if (!isDeleting && currentChar++ === phrase.length) { isDeleting = true; setTimeout(type, 1000); return; }
-            if (isDeleting && currentChar-- === 0) { isDeleting = false; currentPhrase = (currentPhrase + 1) % phrases.length; }
+            if (!isDeleting && currentChar++ === phrase.length) {
+                isDeleting = true;
+                setTimeout(type, 1000);
+                return;
+            }
+            if (isDeleting && currentChar-- === 0) {
+                isDeleting = false;
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+            }
             setTimeout(type, isDeleting ? 100 : 150);
         }
 
