@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tambah Produk</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #b3e5fc, #e1f5fe);
+            color: #333;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            background: #fff;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #03a9f4;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid #03a9f4;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: 0.2s ease-in-out;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0288d1;
+            background-color: #e0f7fa;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-btn {
+            display: inline-block;
+            background-color: #00bcd4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .form-btn:hover {
+            background-color: #008ba3;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+                margin: 20px auto;
+            }
+
+            .form-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Tambah Produk Baru</h2>
+        <form action="simpan.php" method="POST">
+            <div class="form-group">
+                <label for="nama">Nama Produk</label>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+            <div class="form-group">
+                <label for="kode">Kode Produk / No.</label>
+                <input type="text" id="kode" name="kode" required>
+            </div>
+            <div class="form-group">
+                <label for="link">Link Produk (Tokopedia/Shopee)</label>
+                <input type="url" id="link" name="link" required>
+            </div>
+            <div class="form-group">
+                <label for="gambar">URL Gambar Produk</label>
+                <input type="url" id="gambar" name="gambar" required>
+            </div>
+            <button type="submit" class="form-btn">Simpan Produk</button>
+        </form>
+    </div>
+</body>
+
+<!-- <section class="section-about" id="page2" style="display:none;">
+            <div class="section-about-left">
+                <div class="slider-container" id="slider-container">
+                    <div class="slider-wrapper" id="slider-wrapper">
+                        <img src="asset/img/8a1326ca-aa63-45d8-befd-89b03df6b8a9.jpg" alt="Foto 1" />
+                        <img src="asset/img/a267b83a-3cf2-472a-b845-65fec58e5091.jpg" alt="Foto 2" />
+                    </div>
+                </div>
+                <div class="slider-indicators" id="indicators"></div>
+            </div>
+            <div class="section-about-text">
+                <h1>About <i><u>Me</u></i></h1>
+                <p>Halooo... nama Aku Widia Rossi or as known as <b><u><i>Iwiddd</i></u></b>, seorang yang suka banget mengeksplorasi dunia kreatif dan digital — mulai dari desain, fotografi, nonton film dan editing video. Kadang aku juga suka ngulik hal-hal teknis, tapi tetap dikemas dengan gaya santai dan personal.</p>
+                <button class="btn-next" onclick="scrollToSection('page3')">Next Page</button>
+            </div>
+        </section> -->
+
+</html>
