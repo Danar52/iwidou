@@ -144,7 +144,7 @@
         }
 
         .container {
-            max-width: 500px;
+            max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
             text-align: center;
@@ -199,7 +199,7 @@
 
         .product-list {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
         }
 
@@ -302,7 +302,6 @@
             transform: scale(1.1);
         }
 
-        /* Desktop / Tablet styles */
         @media (max-width: 600px) {
             .logo {
                 font-size: 1rem;
@@ -325,34 +324,45 @@
             .menu a {
                 font-size: 0.9rem;
             }
+
             .menu a:hover {
                 font-size: 1rem;
             }
+
             .close-btn {
                 font-size: 1.5rem;
             }
+
             .connect-header h3 {
                 font-size: 1rem;
             }
+
             .copyright {
                 font-size: 0.7rem;
             }
+
             .brand-name {
                 font-size: 1.5rem;
             }
-            .profile-brand {
-                gap: 30px;
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
             }
+
             .product-list {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
             }
+
             .product-item h2 {
                 font-size: 0.9rem;
             }
+
             .product-item .price,
             .product-item .btn {
                 font-size: 0.7rem;
             }
+
             .product-item .btn {
                 padding: 4px 10px;
             }
@@ -494,6 +504,14 @@
                     alt="Max Fashions Sandal" />
                 <h2>Max Fashions Sandal Wanita</h2>
                 <p class="price">No. 001</p>
+                <a href="https://tokopedia.link/9grhUpwhISb" class="btn" target="_blank" rel="noopener noreferrer">Lihat
+                    Produk</a>
+            </div>
+            <div class="product-item">
+                <img src="https://images.tokopedia.net/img/cache/900/VqbcmM/2023/12/12/3e9e5c38-2b0f-4454-ad9e-c769d306249c.jpg"
+                    alt="Gamis" />
+                <h2>ZM Zaskia Mecca - Galya Gamis</h2>
+                <p class="price">No. 002</p>
                 <a href="https://tokopedia.link/9grhUpwhISb" class="btn" target="_blank" rel="noopener noreferrer">Lihat
                     Produk</a>
             </div>
